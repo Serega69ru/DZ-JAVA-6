@@ -1,24 +1,20 @@
 package ru.netology.services;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FreelanceServiceTest {
-    @Test
-    public void testCalculate3months() {
+    @ParameterizedTest
+    @CsvSource({
+            "3, 10000, 3000, 20000",
+            "2, 100000, 60000, 150000"
+    })
+    public void testCalculate3months(int expected, int income, int expenses, int threshold) {
         FreelanceService service = new FreelanceService();
-        int actual = service.calculate(10000, 3000, 20000);
-        int expected = 3;
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testCalculate2months() {
-        FreelanceService service = new FreelanceService();
-        int actual = service.calculate(100_000, 60_000, 150_000);
-        int expected = 2;
+        int actual = service.calculate(income,expenses,threshold);
         Assertions.assertEquals(expected, actual);
     }
 }
