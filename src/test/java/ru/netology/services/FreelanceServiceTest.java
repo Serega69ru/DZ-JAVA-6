@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FreelanceServiceTest {
     @ParameterizedTest
     @CsvSource({
@@ -14,7 +12,7 @@ class FreelanceServiceTest {
     })
     public void testCalculate3months(int expected, int income, int expenses, int threshold) {
         FreelanceService service = new FreelanceService();
-        int actual = service.calculate(income,expenses,threshold);
+        int actual = service.calculate(income, expenses, threshold);
         Assertions.assertEquals(expected, actual);
     }
 }
